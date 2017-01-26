@@ -46,6 +46,11 @@ function playMove(){
 }
 
 function checkWin(p){
+  if (!/[1-9]/.test(moves.join(''))){
+    console.log('You have played to a draw')
+    console.log('How terribly boring\n')
+    process.exit(0)
+  }
   var check = moves.slice().filter(i=>i===p)
   if (check.length < 3){
     return playMove()
