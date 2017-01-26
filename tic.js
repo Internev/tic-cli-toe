@@ -1,5 +1,4 @@
 var inquirer = require('inquirer')
-var winState = false
 var xTurn = true
 var moves = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 var availMoves = {1: true, 2: true, 3: true, 4: true, 5: true, 6: true, 7: true, 8: true, 9: true}
@@ -49,9 +48,44 @@ function playMove(){
 function checkWin(p){
   var check = moves.slice().filter(i=>i===p)
   if (check.length < 3){
-    playMove()
+    return playMove()
   } else {
-    console.log('Potential WINNAR')
-    setTimeout(()=>{process.exit(0)}, 5000)
+    for (var i=0; i<moves.length; i++){
+      if (moves[i] === p){
+        if (line(i, p)){
+          console.log('WE HAVE A WINNER!')
+          console.log('ALL HAIL ' + p + '\n')
+          setTimeout(()=>{process.exit(0)}, 5000)
+        }
+      }
+    }
+    // return playMove()
   }
+}
+
+function line(i, p){
+  //horizontal
+  if (i === 0 || i%3 === 0){
+    if (moves[i+1] === p && moves[i+2] === p){
+      return true
+    }
+  }
+  //vertical
+  if (i === 0 || i === 1 || i === 2){
+    if (moves[i+3] === p && moves[i+6] === p){
+      return true
+    }
+  }
+  //right diagonal
+  if (i === 0) {
+    if (moves[4] === p && moves[8] === p){
+      return true
+    }
+  }
+  if (i === 2){
+    if (moves[4] === p && moves[6] === p){
+      return true
+    }
+  }
+  return false
 }
