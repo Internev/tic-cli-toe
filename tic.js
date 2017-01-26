@@ -55,11 +55,11 @@ function checkWin(p){
         if (line(i, p)){
           console.log('WE HAVE A WINNER!')
           console.log('ALL HAIL ' + p + '\n')
-          setTimeout(()=>{process.exit(0)}, 5000)
+          process.exit(0)
         }
       }
     }
-    // return playMove()
+    return playMove()
   }
 }
 
