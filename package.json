@@ -1,0 +1,22 @@
+{
+  "name": "tic-cli-toe",
+  "version": "1.0.0",
+  "description": "Tic-tac-toe, from the command line.",
+  "main": "tic.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Internev/tic-cli-toe.git"
+  },
+  "author": "Neville Challinger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Internev/tic-cli-toe/issues"
+  },
+  "homepage": "https://github.com/Internev/tic-cli-toe#readme",
+  "dependencies": {
+    "inquirer": "^3.0.1"
+  }
+}
