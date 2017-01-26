@@ -42,6 +42,16 @@ function playMove(){
       availMoves[answer.move] = false
       xTurn = !xTurn
       drawBoard()
-      playMove()
+      checkWin(player)
     })
+}
+
+function checkWin(p){
+  var check = moves.slice().filter(i=>i===p)
+  if (check.length < 3){
+    playMove()
+  } else {
+    console.log('Potential WINNAR')
+    setTimeout(()=>{process.exit(0)}, 5000)
+  }
 }
