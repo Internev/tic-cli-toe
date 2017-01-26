@@ -1,25 +1,26 @@
 var inquirer = require('inquirer')
-
-init()
-
 var winState = false
 var xTurn = true
+var moves = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+init()
 
 function init(){
   drawBoard()
   playMove()
 }
 
-function drawBoard(moves){
-  if (moves === undefined || moves.length === 0){
-    console.log('A thrilling game of tic-tac-toe commences!')
-    console.log(' 1 | 2 | 3 ')
-    console.log('-----------')
-    console.log(' 4 | 5 | 6 ')
-    console.log('-----------')
-    console.log(' 7 | 8 | 9 ')
-    return
+function drawBoard(){
+  if (moves.indexOf(/[XO]/) === -1){
+    console.log('\n******************************************\nA thrilling game of tic-tac-toe commences!\n******************************************\n')
+  } else {
+    console.log('\nThe next exciting move in this electrifying game...\n')
   }
+  console.log(`   ${moves[0]}  | ${moves[1]}  | ${moves[2]}  `)
+  console.log('  -------------')
+  console.log(`   ${moves[3]}  | ${moves[4]}  | ${moves[5]}  `)
+  console.log('  -------------')
+  console.log(`   ${moves[6]}  | ${moves[7]}  | ${moves[8]}  \n`)
 }
 
 function playMove(){
@@ -32,6 +33,8 @@ function playMove(){
   var prompt = inquirer.createPromptModule()
   prompt(question)
     .then(answer=>{
-      console.log(answer)
+      console.log([player, answer.move])
+      moves.push([player, answer.move])
+      xTurn = !xTurn
     })
 }
